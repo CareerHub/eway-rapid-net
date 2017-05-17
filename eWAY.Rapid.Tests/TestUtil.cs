@@ -281,6 +281,14 @@ namespace eWAY.Rapid.Tests
         }
 
         //Assertion helpers
+        internal static void AssertNoErrors(Models.BaseResponse response) {
+            Assert.IsNotNull(response);
+            Assert.IsNull(response.Errors, response.Errors == null 
+                ? string.Empty 
+                : string.Join(", ", response.Errors.Select(
+                    code => code + ": " + RapidClientFactory.UserDisplayMessage(code))));
+        }
+
         internal static void AssertReturnedCustomerData_VerifyAddressAreEqual(Customer responseCustomer, Customer requestCustomer)
         {
             Assert.AreEqual(responseCustomer.Address.State, requestCustomer.Address.State);

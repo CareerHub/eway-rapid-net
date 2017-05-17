@@ -804,4 +804,7 @@
   <data name="S9995" xml:space="preserve">
     <value>"Invalid TransactionFilter"</value>
   </data>
+  <data name="HTTP404" xml:space="preserve">
+    <value>"Invalid endpoint"</value>
+  </data>
 </root>

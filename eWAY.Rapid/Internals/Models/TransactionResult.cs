@@ -1,7 +1,5 @@
-﻿namespace eWAY.Rapid.Internals.Models
-{
-    internal class TransactionResult
-    {
+﻿namespace eWAY.Rapid.Internals.Models {
+    internal class TransactionResult {
         public string AuthorisationCode { get; set; }
         public string ResponseCode { get; set; }
         public string ResponseMessage { get; set; }
@@ -27,5 +25,5 @@
         public int? Source { get; set; }
         public int? MaxRefund { get; set; }
         public int? OriginalTransactionId { get; set; }
-}
+    }
 }

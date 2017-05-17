@@ -1,55 +1,49 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using eWAY.Rapid.Enums;
-using eWAY.Rapid.Internals.Services;
 using eWAY.Rapid.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
-namespace eWAY.Rapid.Tests.IntegrationTests
-{
+namespace eWAY.Rapid.Tests.IntegrationTests {
     [TestClass]
-    public class QueryTransactionTests : SdkTestBase
-    {
+    public class QueryTransactionTests : SdkTestBase {
+
         [TestMethod]
-        public void QueryTransaction_ByTransactionId_Test()
-        {
+        public async Task QueryTransaction_ByTransactionId_Test() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction();
 
             //Act
-            var response = client.Create(PaymentMethod.Direct, transaction);
-            var filter = new TransactionFilter() {TransactionID = response.TransactionStatus.TransactionID};
-            var queryResponse = client.QueryTransaction(filter);
-            var queryResponse2 = client.QueryTransaction(response.TransactionStatus.TransactionID);
+            var response = await client.CreateAsync(PaymentMethod.Direct, transaction);
+            TestUtil.AssertNoErrors(response);
+
+            var filter = new TransactionFilter() { TransactionID = response.TransactionStatus.TransactionID };
+
+            var queryResponse = await client.QueryTransactionAsync(filter);
+            TestUtil.AssertNoErrors(queryResponse);
+
+            var queryResponse2 = await client.QueryTransactionAsync(response.TransactionStatus.TransactionID);
+            TestUtil.AssertNoErrors(queryResponse2);
+
             //Assert
-            Assert.IsNotNull(queryResponse);
-            Assert.IsNotNull(queryResponse2);
             Assert.AreEqual(response.TransactionStatus.TransactionID, queryResponse.TransactionStatus.TransactionID);
             Assert.AreEqual(response.TransactionStatus.TransactionID, queryResponse2.TransactionStatus.TransactionID);
             Assert.AreEqual(response.TransactionStatus.Total, queryResponse2.TransactionStatus.Total);
-            //TestUtil.AssertReturnedCustomerData_VerifyAddressAreEqual(response.Transaction.Customer,
-            //    queryResponse.Transaction.Customer);
-            //TestUtil.AssertReturnedCustomerData_VerifyAllFieldsAreEqual(response.Transaction.Customer,
-            //    queryResponse.Transaction.Customer);
-            //TestUtil.AssertReturnedCustomerData_VerifyAddressAreEqual(response.Transaction.Customer,
-            //    queryResponse2.Transaction.Customer);
-            //TestUtil.AssertReturnedCustomerData_VerifyAllFieldsAreEqual(response.Transaction.Customer,
-            //    queryResponse2.Transaction.Customer);
         }
+
         [TestMethod]
-        public void QueryTransaction_ByAccessCode_Test()
-        {
+        public async Task QueryTransaction_ByAccessCode_Test() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction();
 
             //Act
-            var response = client.Create(PaymentMethod.TransparentRedirect, transaction);
-            var filter = new TransactionFilter() {AccessCode = response.AccessCode};
-            var queryResponse = client.QueryTransaction(filter);
-            var queryResponse2 = client.QueryTransaction(response.AccessCode);
+            var response = await client.CreateAsync(PaymentMethod.TransparentRedirect, transaction);
+            var filter = new TransactionFilter() { AccessCode = response.AccessCode };
+            var queryResponse = await client.QueryTransactionAsync(filter);
+            var queryResponse2 = await client.QueryTransactionAsync(response.AccessCode);
             //Assert
             Assert.IsNotNull(queryResponse);
             Assert.IsNotNull(queryResponse2);
@@ -58,9 +52,9 @@ namespace eWAY.Rapid.Tests.IntegrationTests
             TestUtil.AssertReturnedCustomerData_VerifyAddressAreEqual(response.Transaction.Customer,
                 queryResponse2.Transaction.Customer);
         }
+
         [TestMethod]
-        public void QueryTransaction_ByInvoiceRef_Test()
-        {
+        public async Task QueryTransaction_ByInvoiceRef_Test() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction();
@@ -68,13 +62,12 @@ namespace eWAY.Rapid.Tests.IntegrationTests
             var randomInvoiceRef = r.Next(100000, 999999);
             transaction.PaymentDetails.InvoiceReference = randomInvoiceRef.ToString();
             //Act
-            var response = client.Create(PaymentMethod.Direct, transaction);
-            var filter = new TransactionFilter()
-            {
+            var response = await client.CreateAsync(PaymentMethod.Direct, transaction);
+            var filter = new TransactionFilter() {
                 InvoiceReference = response.Transaction.PaymentDetails.InvoiceReference
             };
-            var queryResponse = client.QueryTransaction(filter);
-            var queryResponse2 = client.QueryInvoiceRef(response.Transaction.PaymentDetails.InvoiceReference);
+            var queryResponse = await client.QueryTransactionAsync(filter);
+            var queryResponse2 = await client.QueryInvoiceRefAsync(response.Transaction.PaymentDetails.InvoiceReference);
             //Assert
             Assert.IsNotNull(queryResponse);
             Assert.AreEqual(response.TransactionStatus.TransactionID, queryResponse.TransactionStatus.TransactionID);
@@ -86,8 +79,7 @@ namespace eWAY.Rapid.Tests.IntegrationTests
                 queryResponse2.Transaction.Customer);
         }
         [TestMethod]
-        public void QueryTransaction_ByInvoiceNumber_Test()
-        {
+        public async Task QueryTransaction_ByInvoiceNumber_Test() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction();
@@ -95,13 +87,12 @@ namespace eWAY.Rapid.Tests.IntegrationTests
             var randomInvoiceNumber = r.Next(10000, 99999);
             transaction.PaymentDetails.InvoiceNumber = "Inv " + randomInvoiceNumber;
             //Act
-            var response = client.Create(PaymentMethod.Direct, transaction);
-            var filter = new TransactionFilter()
-            {
+            var response = await client.CreateAsync(PaymentMethod.Direct, transaction);
+            var filter = new TransactionFilter() {
                 InvoiceNumber = response.Transaction.PaymentDetails.InvoiceNumber
             };
-            var queryResponse = client.QueryTransaction(filter);
-            var queryResponse2 = client.QueryInvoiceNumber(response.Transaction.PaymentDetails.InvoiceNumber);
+            var queryResponse = await client.QueryTransactionAsync(filter);
+            var queryResponse2 = await client.QueryInvoiceNumberAsync(response.Transaction.PaymentDetails.InvoiceNumber);
             //Assert
             Assert.IsNotNull(queryResponse);
             Assert.AreEqual(response.TransactionStatus.TransactionID, queryResponse.TransactionStatus.TransactionID);
@@ -114,81 +105,46 @@ namespace eWAY.Rapid.Tests.IntegrationTests
         }
 
         [TestMethod]
-        public void QueryTransaction_InvalidInputData_ReturnVariousErrors()
-        {
+        public async Task QueryTransaction_InvalidInputData_ReturnVariousErrors() {
             var client = CreateRapidApiClient();
             //Arrange
-            var filter = new TransactionFilter()
-            {
+            var filter = new TransactionFilter() {
                 TransactionID = -1
             };
             //Act
-            var queryByIdResponse = client.QueryTransaction(filter);
+            var queryByIdResponse = await client.QueryTransactionAsync(filter);
             //Assert
             Assert.IsNotNull(queryByIdResponse.Errors);
             Assert.AreEqual(queryByIdResponse.Errors.FirstOrDefault(), "S9995");
 
             //Arrange
-            filter = new TransactionFilter()
-            {
+            filter = new TransactionFilter() {
                 AccessCode = "leRandomAccessCode"
             };
             //Act
-            var queryByAccessCodeResponse = client.QueryTransaction(filter);
+            var queryByAccessCodeResponse = await client.QueryTransactionAsync(filter);
             //Assert
             Assert.IsNull(queryByAccessCodeResponse.Transaction);
 
             //Arrange
-            filter = new TransactionFilter()
-            {
+            filter = new TransactionFilter() {
                 InvoiceNumber = "leRandomInvoiceNumber"
             };
             //Act
-            var queryByInvoiceNumberResponse = client.QueryTransaction(filter);
+            var queryByInvoiceNumberResponse = await client.QueryTransactionAsync(filter);
             //Assert
             Assert.IsNotNull(queryByInvoiceNumberResponse.Errors);
             Assert.AreEqual(queryByInvoiceNumberResponse.Errors.FirstOrDefault(), "V6171");
 
             //Arrange
-            filter = new TransactionFilter()
-            {
+            filter = new TransactionFilter() {
                 InvoiceReference = "leRandomInvoiceReference"
             };
             //Act
-            var queryByInvoiceRefResponse = client.QueryTransaction(filter);
+            var queryByInvoiceRefResponse = await client.QueryTransactionAsync(filter);
             //Assert
             Assert.IsNotNull(queryByInvoiceRefResponse.Errors);
             Assert.AreEqual(queryByInvoiceRefResponse.Errors.FirstOrDefault(), "V6171");
-        }
-
-        [TestMethod]
-        public void QueryTransaction_Rapidv40_Test()
-        {
-            if (GetVersion() > 31)
-            {
-                var client = CreateRapidApiClient();
-                //Arrange
-                var transaction = TestUtil.CreateTransaction();
-
-                //Act
-                var response = client.Create(PaymentMethod.Direct, transaction);
-                var filter = new TransactionFilter() { TransactionID = response.TransactionStatus.TransactionID };
-                var queryResponse = client.QueryTransaction(filter);
-                var queryResponse2 = client.QueryTransaction(response.TransactionStatus.TransactionID);
-                //Assert
-                Assert.IsNotNull(queryResponse);
-                Assert.IsNotNull(queryResponse2);
-                Assert.AreEqual(response.TransactionStatus.TransactionID, queryResponse.TransactionStatus.TransactionID);
-                Assert.AreEqual(response.TransactionStatus.TransactionID, queryResponse2.TransactionStatus.TransactionID);
-                Assert.AreEqual(response.TransactionStatus.Total, queryResponse2.TransactionStatus.Total);
-
-                Assert.AreEqual("036", queryResponse2.Transaction.CurrencyCode);
-                Assert.AreEqual(response.TransactionStatus.Total, queryResponse2.Transaction.MaxRefund);
-            } else
-            {
-                Assert.Inconclusive();
-            }
-
         }
     }
 }

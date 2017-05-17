@@ -1,24 +1,22 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using eWAY.Rapid.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace eWAY.Rapid.Tests.IntegrationTests
-{
+namespace eWAY.Rapid.Tests.IntegrationTests {
     [TestClass]
-    public class DirectRefundTests: SdkTestBase
-    {
+    public class DirectRefundTests : SdkTestBase {
         [TestMethod]
-        public void DirectRefund_ReturnValidData()
-        {
+        public async Task DirectRefund_ReturnValidData() {
             //Arrange
             var client = CreateRapidApiClient();
             var transaction = TestUtil.CreateTransaction();
-            var createTransactionResponse = client.Create(PaymentMethod.Direct, transaction);
+            var createTransactionResponse = await client.CreateAsync(PaymentMethod.Direct, transaction);
             var refund = TestUtil.CreateRefund(createTransactionResponse.TransactionStatus.TransactionID);
             //Act
-            var refundResponse = client.Refund(refund);
+            var refundResponse = await client.RefundAsync(refund);
             //Assert
-            Assert.IsNull(refundResponse.Errors);
+            TestUtil.AssertNoErrors(refundResponse);
             Assert.AreEqual(createTransactionResponse.TransactionStatus.TransactionID, refundResponse.Refund.OriginalTransactionID);
             Assert.IsTrue(refundResponse.ResponseMessage.StartsWith("A"));
             Assert.IsTrue(refundResponse.TransactionID > 0);
@@ -28,16 +26,17 @@ namespace eWAY.Rapid.Tests.IntegrationTests
         }
 
         [TestMethod]
-        public void DirectRefund_InvalidInputData_ReturnVariousErrors()
-        {
+        public async Task DirectRefund_InvalidInputData_ReturnVariousErrors() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction();
-            var createTransactionResponse = client.Create(PaymentMethod.Direct, transaction);
+            var createTransactionResponse = await client.CreateAsync(PaymentMethod.Direct, transaction);
+            TestUtil.AssertNoErrors(createTransactionResponse);
+
             var refund = TestUtil.CreateRefund(createTransactionResponse.TransactionStatus.TransactionID);
             refund.RefundDetails.TotalAmount = -1;
             //Act
-            var refundResponse1 = client.Refund(refund);
+            var refundResponse1 = await client.RefundAsync(refund);
             //Assert
             // This test is failing at the moment
             //Assert.IsNotNull(refundResponse1.Errors);
@@ -46,9 +45,8 @@ namespace eWAY.Rapid.Tests.IntegrationTests
             refund = TestUtil.CreateRefund(createTransactionResponse.TransactionStatus.TransactionID);
             refund.RefundDetails.OriginalTransactionID = -1;
             //Act
-            var refundResponse2 = client.Refund(refund);
+            var refundResponse2 = await client.RefundAsync(refund);
             //Assert
-            Assert.IsNotNull(refundResponse2.Errors);
             Assert.AreEqual(refundResponse2.Errors.FirstOrDefault(), "V6115");
         }
     }

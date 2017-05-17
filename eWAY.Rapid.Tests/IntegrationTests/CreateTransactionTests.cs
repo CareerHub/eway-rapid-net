@@ -1,25 +1,22 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using eWAY.Rapid.Enums;
-using eWAY.Rapid.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace eWAY.Rapid.Tests.IntegrationTests
-{
+namespace eWAY.Rapid.Tests.IntegrationTests {
     [TestClass]
-    public class CreateTransactionTests: SdkTestBase
-    {
+    public class CreateTransactionTests : SdkTestBase {
         [TestMethod]
-        public void Transaction_CreateTransactionDirect_ReturnValidData()
-        {
+        public async Task Transaction_CreateTransactionDirect_ReturnValidData() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction();
 
             //Act
-            var response = client.Create(PaymentMethod.Direct, transaction);
+            var response = await client.CreateAsync(PaymentMethod.Direct, transaction);
 
             //Assert
-            Assert.IsNull(response.Errors);
+            TestUtil.AssertNoErrors(response);
             Assert.IsNotNull(response.Transaction);
             Assert.IsNotNull(response.TransactionStatus);
             Assert.IsNotNull(response.TransactionStatus.Status);
@@ -34,17 +31,16 @@ namespace eWAY.Rapid.Tests.IntegrationTests
         }
 
         [TestMethod]
-        public void Transaction_CreateTransactionTransparentRedirect_ReturnValidData()
-        {
+        public async Task Transaction_CreateTransactionTransparentRedirect_ReturnValidData() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction();
 
             //Act
-            var response = client.Create(PaymentMethod.TransparentRedirect, transaction);
+            var response = await client.CreateAsync(PaymentMethod.TransparentRedirect, transaction);
 
             //Assert
-            Assert.IsNull(response.Errors);
+            TestUtil.AssertNoErrors(response);
             Assert.IsNotNull(response.AccessCode);
             Assert.IsNotNull(response.FormActionUrl);
             TestUtil.AssertReturnedCustomerData_VerifyAddressAreEqual(response.Transaction.Customer,
@@ -54,18 +50,17 @@ namespace eWAY.Rapid.Tests.IntegrationTests
         }
 
         [TestMethod]
-        public void Transaction_CreateTokenTransactionTransparentRedirect_ReturnValidData()
-        {
+        public async Task Transaction_CreateTokenTransactionTransparentRedirect_ReturnValidData() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction();
             transaction.SaveCustomer = true;
 
             //Act
-            var response = client.Create(PaymentMethod.TransparentRedirect, transaction);
+            var response = await client.CreateAsync(PaymentMethod.TransparentRedirect, transaction);
 
             //Assert
-            Assert.IsNull(response.Errors);
+            TestUtil.AssertNoErrors(response);
             Assert.IsNotNull(response.AccessCode);
             Assert.IsNotNull(response.FormActionUrl);
             TestUtil.AssertReturnedCustomerData_VerifyAddressAreEqual(response.Transaction.Customer,
@@ -75,8 +70,7 @@ namespace eWAY.Rapid.Tests.IntegrationTests
         }
 
         [TestMethod]
-        public void Transaction_CreateTransactionResponsiveShared_ReturnValidData()
-        {
+        public async Task Transaction_CreateTransactionResponsiveShared_ReturnValidData() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction();
@@ -90,10 +84,10 @@ namespace eWAY.Rapid.Tests.IntegrationTests
             transaction.VerifyCustomerPhone = false;
 
             //Act
-            var response = client.Create(PaymentMethod.ResponsiveShared, transaction);
+            var response = await client.CreateAsync(PaymentMethod.ResponsiveShared, transaction);
 
             //Assert
-            Assert.IsNull(response.Errors);
+            TestUtil.AssertNoErrors(response);
             Assert.IsNotNull(response.AccessCode);
             Assert.IsNotNull(response.FormActionUrl);
             Assert.IsNotNull(response.SharedPaymentUrl);
@@ -104,14 +98,13 @@ namespace eWAY.Rapid.Tests.IntegrationTests
         }
 
         [TestMethod]
-        public void Transaction_CreateTransactionDirect_InvalidInputData_ReturnVariousErrors()
-        {
+        public async Task Transaction_CreateTransactionDirect_InvalidInputData_ReturnVariousErrors() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction(true);
             transaction.Customer.CardDetails.Number = "-1";
             //Act
-            var response1 = client.Create(PaymentMethod.Direct, transaction);
+            var response1 = await client.CreateAsync(PaymentMethod.Direct, transaction);
             //Assert
             Assert.IsNotNull(response1.Errors);
             Assert.AreEqual(response1.Errors.FirstOrDefault(), "V6110");
@@ -119,21 +112,20 @@ namespace eWAY.Rapid.Tests.IntegrationTests
             transaction = TestUtil.CreateTransaction(true);
             transaction.PaymentDetails.TotalAmount = -1;
             //Act
-            var response2 = client.Create(PaymentMethod.Direct, transaction);
+            var response2 = await client.CreateAsync(PaymentMethod.Direct, transaction);
             //Assert
             Assert.IsNotNull(response2.Errors);
             Assert.AreEqual(response2.Errors.FirstOrDefault(), "V6011");
         }
 
         [TestMethod]
-        public void Transaction_CreateTransactionTransparentRedirect_InvalidInputData_ReturnVariousErrors()
-        {
+        public async Task Transaction_CreateTransactionTransparentRedirect_InvalidInputData_ReturnVariousErrors() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction(true);
             transaction.PaymentDetails.TotalAmount = 0;
             //Act
-            var response1 = client.Create(PaymentMethod.TransparentRedirect, transaction);
+            var response1 = await client.CreateAsync(PaymentMethod.TransparentRedirect, transaction);
             //Assert
             Assert.IsNotNull(response1.Errors);
             Assert.AreEqual(response1.Errors.FirstOrDefault(), "V6011");
@@ -141,21 +133,20 @@ namespace eWAY.Rapid.Tests.IntegrationTests
             transaction = TestUtil.CreateTransaction(true);
             transaction.RedirectURL = "anInvalidRedirectUrl";
             //Act
-            var response2 = client.Create(PaymentMethod.TransparentRedirect, transaction);
+            var response2 = await client.CreateAsync(PaymentMethod.TransparentRedirect, transaction);
             //Assert
             Assert.IsNotNull(response2.Errors);
             Assert.AreEqual(response2.Errors.FirstOrDefault(), "V6059");
         }
 
         [TestMethod]
-        public void Transaction_CreateTransactionResponsiveShared_InvalidInputData_ReturnVariousErrors()
-        {
+        public async Task Transaction_CreateTransactionResponsiveShared_InvalidInputData_ReturnVariousErrors() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction(true);
             transaction.PaymentDetails.TotalAmount = 0;
             //Act
-            var response1 = client.Create(PaymentMethod.TransparentRedirect, transaction);
+            var response1 = await client.CreateAsync(PaymentMethod.TransparentRedirect, transaction);
             //Assert
             Assert.IsNotNull(response1.Errors);
             Assert.AreEqual(response1.Errors.FirstOrDefault(), "V6011");
@@ -163,7 +154,7 @@ namespace eWAY.Rapid.Tests.IntegrationTests
             transaction = TestUtil.CreateTransaction(true);
             transaction.RedirectURL = "anInvalidRedirectUrl";
             //Act
-            var response2 = client.Create(PaymentMethod.TransparentRedirect, transaction);
+            var response2 = await client.CreateAsync(PaymentMethod.TransparentRedirect, transaction);
             //Assert
             Assert.IsNotNull(response2.Errors);
             Assert.AreEqual(response2.Errors.FirstOrDefault(), "V6059");

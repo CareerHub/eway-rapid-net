@@ -1,54 +1,58 @@
-﻿using System.Linq;
+﻿using System.Threading.Tasks;
 using eWAY.Rapid.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace eWAY.Rapid.Tests.IntegrationTests
-{
+namespace eWAY.Rapid.Tests.IntegrationTests {
     [TestClass]
-    public class UpdateCustomerTests: SdkTestBase
-    {
+    public class UpdateCustomerTests : SdkTestBase {
         [TestMethod]
-        public void Customer_UpdateCustomerDirect_ReturnValidData()
-        {
+        public async Task Customer_UpdateCustomerDirect_ReturnValidData() {
             var client = CreateRapidApiClient();
             //Arrange
             var customer = TestUtil.CreateCustomer();
-            var createResponse = client.Create(PaymentMethod.Direct, customer);
+            var createResponse = await client.CreateAsync(PaymentMethod.Direct, customer);
+            TestUtil.AssertNoErrors(createResponse);
+
             customer.TokenCustomerID = createResponse.Customer.TokenCustomerID;
             //Act
-            var updateResponse = client.UpdateCustomer(PaymentMethod.Direct, customer);
+            var updateResponse = await client.UpdateCustomerAsync(PaymentMethod.Direct, customer);
 
             //Assert
+            TestUtil.AssertNoErrors(updateResponse);
             Assert.AreEqual(createResponse.Customer.TokenCustomerID, updateResponse.Customer.TokenCustomerID);
         }
 
         [TestMethod]
-        public void Customer_UpdateCustomerTransparentRedirect_ReturnValidData()
-        {
+        public async Task Customer_UpdateCustomerTransparentRedirect_ReturnValidData() {
             var client = CreateRapidApiClient();
             //Arrange
             var customer = TestUtil.CreateCustomer();
-            var createResponse = client.Create(PaymentMethod.TransparentRedirect, customer);
+            var createResponse = await client.CreateAsync(PaymentMethod.Direct, customer);
+            TestUtil.AssertNoErrors(createResponse);
+
             customer.TokenCustomerID = createResponse.Customer.TokenCustomerID;
             //Act
-            var updateResponse = client.UpdateCustomer(PaymentMethod.Direct, customer);
+            var updateResponse = await client.UpdateCustomerAsync(PaymentMethod.TransparentRedirect, customer);
 
             //Assert
+            TestUtil.AssertNoErrors(updateResponse);
             Assert.AreEqual(createResponse.Customer.TokenCustomerID, updateResponse.Customer.TokenCustomerID);
         }
 
         [TestMethod]
-        public void Customer_UpdateCustomerResponsiveShared_ReturnValidData()
-        {
+        public async Task Customer_UpdateCustomerResponsiveShared_ReturnValidData() {
             var client = CreateRapidApiClient();
             //Arrange
             var customer = TestUtil.CreateCustomer();
-            var createResponse = client.Create(PaymentMethod.TransparentRedirect, customer);
+            var createResponse = await client.CreateAsync(PaymentMethod.Direct, customer);
+            TestUtil.AssertNoErrors(createResponse);
+
             customer.TokenCustomerID = createResponse.Customer.TokenCustomerID;
             //Act
-            var updateResponse = client.UpdateCustomer(PaymentMethod.ResponsiveShared, customer);
+            var updateResponse = await client.UpdateCustomerAsync(PaymentMethod.ResponsiveShared, customer);
 
             //Assert
+            TestUtil.AssertNoErrors(updateResponse);
             Assert.AreEqual(createResponse.Customer.TokenCustomerID, updateResponse.Customer.TokenCustomerID);
         }
     }

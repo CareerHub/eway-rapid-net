@@ -1,24 +1,20 @@
-﻿using eWAY.Rapid.Enums;
+﻿using System.Threading.Tasks;
+using eWAY.Rapid.Enums;
 using eWAY.Rapid.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace eWAY.Rapid.Tests.IntegrationTests
-{
+namespace eWAY.Rapid.Tests.IntegrationTests {
     [TestClass]
-    public class PreAuthTests : SdkTestBase
-    {
+    public class PreAuthTests : SdkTestBase {
         [TestMethod]
-        public void PreAuth_CapturePayment_ReturnValidData()
-        {
+        public async Task PreAuth_CapturePayment_ReturnValidData() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction(false);
-            var preAuthTransaction = client.Create(PaymentMethod.Direct, transaction);
+            var preAuthTransaction = await client.CreateAsync(PaymentMethod.Direct, transaction);
             //Act
-            var preAuthRequest = new CapturePaymentRequest()
-            {
-                Payment = new Payment()
-                {
+            var preAuthRequest = new CapturePaymentRequest() {
+                Payment = new Payment() {
                     CurrencyCode = preAuthTransaction.Transaction.PaymentDetails.CurrencyCode,
                     InvoiceDescription = preAuthTransaction.Transaction.PaymentDetails.InvoiceDescription,
                     InvoiceNumber = preAuthTransaction.Transaction.PaymentDetails.InvoiceNumber,
@@ -27,7 +23,7 @@ namespace eWAY.Rapid.Tests.IntegrationTests
                 },
                 TransactionId = preAuthTransaction.TransactionStatus.TransactionID.ToString()
             };
-            var preAuthResponse = client.CapturePayment(preAuthRequest);
+            var preAuthResponse = await client.CapturePaymentAsync(preAuthRequest);
             //Assert
             Assert.IsNotNull(preAuthResponse);
             Assert.IsTrue(preAuthResponse.TransactionStatus);
@@ -37,19 +33,17 @@ namespace eWAY.Rapid.Tests.IntegrationTests
         }
 
         [TestMethod]
-        public void PreAuth_CancelAuthorisation_ReturnValidData()
-        {
+        public async Task PreAuth_CancelAuthorisation_ReturnValidData() {
             var client = CreateRapidApiClient();
             //Arrange
             var transaction = TestUtil.CreateTransaction(false);
-            var preAuthTransaction = client.Create(PaymentMethod.Direct, transaction);
+            var preAuthTransaction = await client.CreateAsync(PaymentMethod.Direct, transaction);
             //Act
-            var preAuthRequest = new CancelAuthorisationRequest()
-            {
+            var preAuthRequest = new CancelAuthorisationRequest() {
                 TransactionId = preAuthTransaction.TransactionStatus.TransactionID.ToString()
             };
 
-            var preAuthResponse = client.CancelAuthorisation(preAuthRequest);
+            var preAuthResponse = await client.CancelAuthorisationAsync(preAuthRequest);
             //Assert
             Assert.IsNotNull(preAuthResponse);
             Assert.IsTrue(preAuthResponse.TransactionStatus);

@@ -1,27 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Net;
-using System.Text;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
+using System.Security.Authentication;
+using System.Text;
+using System.Threading.Tasks;
 using eWAY.Rapid.Internals.Enums;
 using eWAY.Rapid.Internals.Request;
 using eWAY.Rapid.Internals.Response;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace eWAY.Rapid.Internals.Services
-{
+namespace eWAY.Rapid.Internals.Services {
     /// <summary>
     /// Internal Client class that does the invocation of Rapid native API call
     /// </summary>
-    internal class RapidService : IRapidService
-    {
-        private string _rapidEndpoint;
-        private string _authenticationHeader;
-        private int? _version;
-        private bool _isValidEndPoint;
-        private bool _isValidCredentials;
+    internal class RapidService : IRapidService {
+        private Uri _rapidEndpoint;
+        private string _apiKey;
+        private string _password;
 
         private const string ACCESS_CODES = "AccessCodes";
         private const string ACCESS_CODE_RESULT = "AccessCode/{0}";
@@ -34,342 +32,173 @@ namespace eWAY.Rapid.Internals.Services
         private const string QUERY_CUSTOMER = "Customer/{0}";
         private const string TRANSACTION_FILTER_INVOICE_NUMBER = "Transaction/InvoiceNumber/{0}";
         private const string TRANSACTION_FILTER_INVOICE_REF = "Transaction/InvoiceRef/{0}";
-        private const string SETTLEMENT_SEARCH = "Search/Settlement?{0}";
+        private const string SETTLEMENT_SEARCH = "Search/Settlement";
 
+        public RapidService(string apiKey, string password, string endpoint) {
+            if(string.IsNullOrWhiteSpace(apiKey)) {
+                throw new ArgumentException("required", nameof(apiKey));
+            }
+            if(string.IsNullOrWhiteSpace(password)) {
+                throw new ArgumentException("required", nameof(password));
+            }
+            if(string.IsNullOrEmpty(endpoint)) {
+                throw new ArgumentException($"required", nameof(endpoint));
+            }
+            if(!Uri.IsWellFormedUriString(endpoint, UriKind.Absolute)) {
+                throw new ArgumentException($"invalid url: '{endpoint}'", nameof(endpoint));
+            }
 
-        public IMappingService MappingService { get; set; }
-        
-        public RapidService(string apiKey, string password, string endpoint)
-        {
-            SetCredentials(apiKey, password);
-            SetRapidEndpoint(endpoint);
+            _apiKey = apiKey;
+            _password = password;
+            _rapidEndpoint = new Uri(endpoint);
         }
 
-
-        public DirectCancelAuthorisationResponse CancelAuthorisation(DirectCancelAuthorisationRequest request)
-        {
-            return JsonPost<DirectCancelAuthorisationRequest, DirectCancelAuthorisationResponse>(request, CANCEL_AUTHORISATION);
+        public Task<DirectCancelAuthorisationResponse> CancelAuthorisationAsync(DirectCancelAuthorisationRequest request) {
+            return JsonPostAsync<DirectCancelAuthorisationRequest, DirectCancelAuthorisationResponse>(request, CANCEL_AUTHORISATION);
         }
 
-        public DirectCapturePaymentResponse CapturePayment(DirectCapturePaymentRequest request)
-        {
-            return JsonPost<DirectCapturePaymentRequest, DirectCapturePaymentResponse>(request, CAPTURE_PAYMENT);
+        public Task<DirectCapturePaymentResponse> CapturePaymentAsync(DirectCapturePaymentRequest request) {
+            return JsonPostAsync<DirectCapturePaymentRequest, DirectCapturePaymentResponse>(request, CAPTURE_PAYMENT);
         }
 
-        public CreateAccessCodeResponse CreateAccessCode(CreateAccessCodeRequest request)
-        {
-            return JsonPost<CreateAccessCodeRequest, CreateAccessCodeResponse>(request, ACCESS_CODES);
+        public Task<CreateAccessCodeResponse> CreateAccessCodeAsync(CreateAccessCodeRequest request) {
+            return JsonPostAsync<CreateAccessCodeRequest, CreateAccessCodeResponse>(request, ACCESS_CODES);
         }
 
-        public CreateAccessCodeResponse UpdateCustomerCreateAccessCode(CreateAccessCodeRequest request)
-        {
+        public Task<CreateAccessCodeResponse> UpdateCustomerCreateAccessCodeAsync(CreateAccessCodeRequest request) {
             request.Method = Method.UpdateTokenCustomer;
-            return JsonPut<CreateAccessCodeRequest, CreateAccessCodeResponse>(request, ACCESS_CODES);
+            return JsonPostAsync<CreateAccessCodeRequest, CreateAccessCodeResponse>(request, ACCESS_CODES);
         }
 
-        public CreateAccessCodeSharedResponse CreateAccessCodeShared(CreateAccessCodeSharedRequest request)
-        {
-            return JsonPost<CreateAccessCodeSharedRequest, CreateAccessCodeSharedResponse>(request, ACCESS_CODES_SHARED);
+        public Task<CreateAccessCodeSharedResponse> CreateAccessCodeSharedAsync(CreateAccessCodeSharedRequest request) {
+            return JsonPostAsync<CreateAccessCodeSharedRequest, CreateAccessCodeSharedResponse>(request, ACCESS_CODES_SHARED);
         }
 
-        public CreateAccessCodeSharedResponse UpdateCustomerCreateAccessCodeShared(CreateAccessCodeSharedRequest request)
-        {
+        public Task<CreateAccessCodeSharedResponse> UpdateCustomerCreateAccessCodeSharedAsync(CreateAccessCodeSharedRequest request) {
             request.Method = Method.UpdateTokenCustomer;
-            return JsonPut<CreateAccessCodeSharedRequest, CreateAccessCodeSharedResponse>(request, ACCESS_CODES_SHARED);
+            return JsonPostAsync<CreateAccessCodeSharedRequest, CreateAccessCodeSharedResponse>(request, ACCESS_CODES_SHARED);
         }
 
-        public GetAccessCodeResultResponse GetAccessCodeResult(GetAccessCodeResultRequest request)
-        {
-            return JsonGet<GetAccessCodeResultResponse>(string.Format(ACCESS_CODE_RESULT, request.AccessCode));
+        public Task<GetAccessCodeResultResponse> GetAccessCodeResultAsync(GetAccessCodeResultRequest request) {
+            return JsonGetAsync<GetAccessCodeResultResponse>(string.Format(ACCESS_CODE_RESULT, request.AccessCode));
         }
 
-        public DirectPaymentResponse DirectPayment(DirectPaymentRequest request)
-        {
-            return JsonPost<DirectPaymentRequest, DirectPaymentResponse>(request, DIRECT_PAYMENT);
+        public Task<DirectPaymentResponse> DirectPaymentAsync(DirectPaymentRequest request) {
+            return JsonPostAsync<DirectPaymentRequest, DirectPaymentResponse>(request, DIRECT_PAYMENT);
         }
 
-        public DirectPaymentResponse UpdateCustomerDirectPayment(DirectPaymentRequest request)
-        {
+        public Task<DirectPaymentResponse> UpdateCustomerDirectPaymentAsync(DirectPaymentRequest request) {
             request.Method = Method.UpdateTokenCustomer;
-            return JsonPut<DirectPaymentRequest, DirectPaymentResponse>(request, DIRECT_PAYMENT);
+            return JsonPostAsync<DirectPaymentRequest, DirectPaymentResponse>(request, DIRECT_PAYMENT);
         }
 
-        public DirectAuthorisationResponse DirectAuthorisation(DirectAuthorisationRequest request)
-        {
-            return JsonPost<DirectAuthorisationRequest, DirectAuthorisationResponse>(request, DIRECT_PAYMENT);
+        public Task<DirectAuthorisationResponse> DirectAuthorisationAsync(DirectAuthorisationRequest request) {
+            return JsonPostAsync<DirectAuthorisationRequest, DirectAuthorisationResponse>(request, DIRECT_PAYMENT);
         }
 
-        public DirectCustomerResponse DirectCustomerCreate(DirectCustomerRequest request)
-        {
-            return JsonPost<DirectCustomerRequest, DirectCustomerResponse>(request, DIRECT_PAYMENT);
+        public Task<DirectCustomerResponse> DirectCustomerCreateAsync(DirectCustomerRequest request) {
+            return JsonPostAsync<DirectCustomerRequest, DirectCustomerResponse>(request, DIRECT_PAYMENT);
         }
 
-        public DirectCustomerSearchResponse DirectCustomerSearch(DirectCustomerSearchRequest request)
-        {
-            return JsonGet<DirectCustomerSearchResponse>(string.Format(QUERY_CUSTOMER, request.TokenCustomerID));
+        public Task<DirectCustomerSearchResponse> DirectCustomerSearchAsync(DirectCustomerSearchRequest request) {
+            return JsonGetAsync<DirectCustomerSearchResponse>(string.Format(QUERY_CUSTOMER, request.TokenCustomerID));
         }
 
-        public DirectRefundResponse DirectRefund(DirectRefundRequest request)
-        {
-            return JsonPost<DirectRefundRequest, DirectRefundResponse>(request, string.Format(REFUND_PAYMENT, request.Refund.TransactionID));
+        public Task<DirectRefundResponse> DirectRefundAsync(DirectRefundRequest request) {
+            return JsonPostAsync<DirectRefundRequest, DirectRefundResponse>(request, string.Format(REFUND_PAYMENT, request.Refund.TransactionID));
         }
 
-        public TransactionSearchResponse QueryTransaction(long transactionID)
-        {
+        public Task<TransactionSearchResponse> QueryTransactionAsync(long transactionID) {
             var method = string.Format(QUERY_TRANSACTION, transactionID);
-            return JsonGet<TransactionSearchResponse>(method);
+            return JsonGetAsync<TransactionSearchResponse>(method);
         }
 
-        public TransactionSearchResponse QueryTransaction(string accessCode)
-        {
+        public Task<TransactionSearchResponse> QueryTransactionAsync(string accessCode) {
             var method = string.Format(QUERY_TRANSACTION, accessCode);
-            return JsonGet<TransactionSearchResponse>(method);
+            return JsonGetAsync<TransactionSearchResponse>(method);
         }
 
-        public TransactionSearchResponse QueryInvoiceRef(string invoiceRef)
-        {
+        public Task<TransactionSearchResponse> QueryInvoiceRefAsync(string invoiceRef) {
             var method = string.Format(TRANSACTION_FILTER_INVOICE_REF, invoiceRef);
-            return JsonGet<TransactionSearchResponse>(method);
+            return JsonGetAsync<TransactionSearchResponse>(method);
         }
 
-        public TransactionSearchResponse QueryInvoiceNumber(string invoiceNumber)
-        {
+        public Task<TransactionSearchResponse> QueryInvoiceNumberAsync(string invoiceNumber) {
             var method = string.Format(TRANSACTION_FILTER_INVOICE_NUMBER, invoiceNumber);
-            return JsonGet<TransactionSearchResponse>(method);
+            return JsonGetAsync<TransactionSearchResponse>(method);
         }
 
-        public DirectSettlementSearchResponse SettlementSearch(string request)
-        {
-            var method = string.Format(SETTLEMENT_SEARCH, request);
-            return JsonGet<DirectSettlementSearchResponse>(method);
+        public Task<DirectSettlementSearchResponse> SettlementSearchAsync(string query) {
+            var method = SETTLEMENT_SEARCH + query;
+            return JsonGetAsync<DirectSettlementSearchResponse>(method);
         }
 
-        public TResponse JsonPost<TRequest, TResponse>(TRequest request, string method)
+        public async Task<TResponse> JsonPostAsync<TRequest, TResponse>(TRequest request, string method)
             where TRequest : class
-            where TResponse : BaseResponse, new()
-        {
+            where TResponse : BaseResponse, new() {
             var jsonString = JsonConvert.SerializeObject(request,
-                new JsonSerializerSettings()
-                {
-                    NullValueHandling = NullValueHandling.Ignore,
-                    Converters = new JsonConverter[] {new StringEnumConverter()}
-                });
+                   new JsonSerializerSettings() {
+                       NullValueHandling = NullValueHandling.Ignore,
+                       Converters = new JsonConverter[] { new StringEnumConverter() }
+                   });
 
-            // Store the default protocol and force TLS 1.2
-            SecurityProtocolType oldProtocol = ServicePointManager.SecurityProtocol;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-            var endpointUrl = _rapidEndpoint + method;
-            // create a webrequest
-            var webRequest = (HttpWebRequest)WebRequest.Create(endpointUrl);
-            var response = new TResponse();
-            try
-            {
-                AddHeaders(webRequest, HttpMethods.POST.ToString());
-                webRequest.ContentLength = Encoding.UTF8.GetByteCount(jsonString);
-                var result = GetWebResponse(webRequest, jsonString);
-                response = JsonConvert.DeserializeObject<TResponse>(result);
+            using(var client = GetClient()) {
+                var response = await client.PostAsync(method, content);
+
+                return await DeserializeResponse<TResponse>(response);
             }
-            catch (WebException ex)
-            {
-                var errors = HandleWebException(ex);
-                response.Errors = errors;
-            }
-            // Restore old security protocol
-            ServicePointManager.SecurityProtocol = oldProtocol;
-            return response;
         }
 
-        public TResponse JsonPut<TRequest, TResponse>(TRequest request, string method)
-            where TRequest : class
-            where TResponse : BaseResponse, new()
-        {
-            var jsonString = JsonConvert.SerializeObject(request,
-                new JsonSerializerSettings()
-                {
-                    NullValueHandling = NullValueHandling.Ignore,
-                    Converters = new JsonConverter[] { new StringEnumConverter() }
-                });
-
-            // Store the default protocol and force TLS 1.2
-            SecurityProtocolType oldProtocol = ServicePointManager.SecurityProtocol;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-            var endpointUrl = _rapidEndpoint + method;
-            // create a webrequest
-            var webRequest = (HttpWebRequest)WebRequest.Create(endpointUrl);
-            var response = new TResponse();
-            try
-            {
-                //TODO:
-                //This should be a PUT
-                AddHeaders(webRequest, HttpMethods.POST.ToString());
-                webRequest.ContentLength = Encoding.UTF8.GetByteCount(jsonString);
-                var result = GetWebResponse(webRequest, jsonString);
-                response = JsonConvert.DeserializeObject<TResponse>(result);
+        public async Task<TResponse> JsonGetAsync<TResponse>(string method)
+            where TResponse : BaseResponse, new() {
+            using(var client = GetClient()) {
+                var response = await client.GetAsync(method);
+                return await DeserializeResponse<TResponse>(response);
             }
-            catch (WebException ex)
-            {
-                var errors = HandleWebException(ex);
-                response.Errors = errors;
-            }
-            // Restore old security protocol
-            ServicePointManager.SecurityProtocol = oldProtocol;
-            return response;
         }
 
-        public TResponse JsonGet<TResponse>(string method)
-            where TResponse : BaseResponse, new()
-        {
-            var endpointUrl = _rapidEndpoint + method;
-
-            // Store the default protocol and force TLS 1.2
-            SecurityProtocolType oldProtocol = ServicePointManager.SecurityProtocol;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-            // create a webrequest
-            var webRequest = (HttpWebRequest)WebRequest.Create(endpointUrl);
-            var response = new TResponse();
-            try
-            {
-                AddHeaders(webRequest, HttpMethods.GET.ToString());
-                string result = GetWebResponse(webRequest);
-                if (String.IsNullOrEmpty(result))
-                {
-                    var errors = RapidSystemErrorCode.COMMUNICATION_ERROR;
-                    response.Errors = errors;
+        private async Task<TResponse> DeserializeResponse<TResponse>(HttpResponseMessage response) where TResponse : BaseResponse, new() {
+            if(!response.IsSuccessStatusCode) {
+                switch(response.StatusCode) {
+                    case HttpStatusCode.Unauthorized:
+                    case HttpStatusCode.Forbidden:
+                        return new TResponse() { Errors = RapidSystemErrorCode.AUTHENTICATION_ERROR };
+                    case HttpStatusCode.NotFound:
+                        return new TResponse() { Errors = RapidSystemErrorCode.NOT_FOUND };
+                    default:
+                        return new TResponse() { Errors = RapidSystemErrorCode.COMMUNICATION_ERROR };
                 }
-                else
-                {
-                    response = JsonConvert.DeserializeObject<TResponse>(result);
+            } else {
+                var content = await response.Content.ReadAsStringAsync();
+
+                if(String.IsNullOrEmpty(content)) {
+                    return new TResponse() { Errors = RapidSystemErrorCode.COMMUNICATION_ERROR };
+                } else {
+                    return JsonConvert.DeserializeObject<TResponse>(content);
                 }
             }
-            catch (WebException ex)
-            {
-                var errors = HandleWebException(ex);
-                response.Errors = errors;
-            }
-            // Restore old security protocol
-            ServicePointManager.SecurityProtocol = oldProtocol;
-            return response;
         }
 
-        private void AddHeaders(HttpWebRequest webRequest, string httpMethod)
-        {
-            // add authentication to request
-            webRequest.Headers.Add("Authorization", _authenticationHeader);
-            webRequest.UserAgent = "eWAY SDK .NET " + Assembly.GetExecutingAssembly().GetName().Version;
-            webRequest.Method = httpMethod;
-            webRequest.ContentType = "application/json";
+        private HttpClient GetClient() {
+            var handler = new HttpClientHandler();
 
-            if (_version.HasValue)
-            {
-                webRequest.Headers.Add("X-EWAY-APIVERSION", _version.ToString());
-            }
-        }
+            handler.SslProtocols = SslProtocols.Tls12;
 
-        private string HandleWebException(WebException ex)
-        {
-            if (ex.Response == null)
-            {
-                return RapidSystemErrorCode.COMMUNICATION_ERROR;
-            }
+            var client = new HttpClient(handler);
 
-            var errorCode = ((HttpWebResponse)ex.Response).StatusCode;
+            client.BaseAddress = _rapidEndpoint;
 
-            if (errorCode == HttpStatusCode.Unauthorized ||
-                errorCode == HttpStatusCode.Forbidden ||
-                errorCode == HttpStatusCode.NotFound)
-            {
-                _isValidCredentials = false;
-                return RapidSystemErrorCode.AUTHENTICATION_ERROR;
-            }
-            return RapidSystemErrorCode.COMMUNICATION_ERROR;
-        }
+            var headers = client.DefaultRequestHeaders;
 
-        public virtual string GetWebResponse(WebRequest webRequest, string content = null)
-        {
-            if (content != null)
-            {
-                using (new MemoryStream())
-                {
-                    using (var writer = new StreamWriter(webRequest.GetRequestStream()))
-                    {
-                        writer.Write(content);
-                        writer.Close();
-                    }
-                }
-            }
+            headers.UserAgent.Add(new ProductInfoHeaderValue("eWAY-SDK-DotNetCore", "1.0.0"));
 
-            string result;
-            var webResponse = (HttpWebResponse)webRequest.GetResponse();
-            using (var stream = webResponse.GetResponseStream())
-            {
-                if (stream == null) return null;
-                var sr = new StreamReader(stream);
-                result = sr.ReadToEnd();
-                sr.Close();
-            }
-            return result;
-        }
+            headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(_apiKey + ":" + _password)));
 
-        public string GetRapidEndpoint()
-        {
-            return _rapidEndpoint;
-        }
-
-        public void SetRapidEndpoint(string value)
-        {
-            switch (value)
-            {
-                case "Production":
-                    _rapidEndpoint = GlobalEndpoints.PRODUCTION;
-                    break;
-                case "Sandbox":
-                    _rapidEndpoint = GlobalEndpoints.SANDBOX;
-                    break;
-                default:
-                    if (!value.EndsWith("/"))
-                    {
-                        value += "/";
-                    }
-                    _rapidEndpoint = value;
-                    break;
-            }
-            _isValidEndPoint = Uri.IsWellFormedUriString(_rapidEndpoint, UriKind.Absolute);
-        }
-
-        public void SetCredentials(string apiKey, string password)
-        {
-            _authenticationHeader = "Basic " + Convert.ToBase64String(Encoding.ASCII.GetBytes(apiKey + ":" + password));
-            _isValidCredentials = !string.IsNullOrWhiteSpace(apiKey) && !string.IsNullOrWhiteSpace(password);
-        }
-
-        public void SetVersion(int version)
-        {
-            _version = version;
-        }
-
-        public bool IsValid()
-        {
-            return _isValidCredentials && _isValidEndPoint;
-        }
-
-        public List<string> GetErrorCodes()
-        {
-            var errors = new List<string>();
-
-            if (!_isValidEndPoint)
-            {
-                errors.Add(RapidSystemErrorCode.INVALID_ENDPOINT_ERROR);
-            }
-
-            if (!_isValidCredentials)
-            {
-                errors.Add(RapidSystemErrorCode.INVALID_CREDENTIAL_ERROR);
-            }
-
-            return errors;
+            headers.Add("X-EWAY-APIVERSION", SystemConstants.API_VERSION);
+            
+            return client;
         }
     }
 }
