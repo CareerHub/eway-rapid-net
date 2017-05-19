@@ -1,6 +1,6 @@
 os: Visual Studio 2017
 
-version: 1.0.0-{build}
+version: 1.0.{build}
 
 configuration: Release
 
@@ -18,7 +18,7 @@ test_script:
   - dotnet test "eWAY.Rapid.Tests\eWAY.Rapid.Tests.csproj" --configuration Release
 
 build_script:
-  - ps: dotnet pack "eWAY.Rapid" --configuration Release --output "bin" --version-suffix $env:APPVEYOR_BUILD_NUMBER
+  - ps: dotnet pack "eWAY.Rapid" --configuration Release --output "bin" /p:PackageVersion=$($env:APPVEYOR_REPO_TAG_NAME.TrimStart("v"))
 
 artifacts:
   - path: eWAY.Rapid\bin\*.nupkg
