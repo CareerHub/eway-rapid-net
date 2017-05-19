@@ -3,9 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAY.Rapid", "eWAY.Rapid\eWAY.Rapid.csproj", "{D848FF44-BA0A-4964-A92A-FDBE9703E852}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eWAY.Rapid.Tests", "eWAY.Rapid.Tests\eWAY.Rapid.Tests.csproj", "{48E477F9-49CC-42C7-882E-4F798E438669}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAY.Rapid.Tests", "eWAY.Rapid.Tests\eWAY.Rapid.Tests.csproj", "{48E477F9-49CC-42C7-882E-4F798E438669}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAY.Rapid", "eWAY.Rapid\eWAY.Rapid.csproj", "{131898AB-0DCE-45F3-89D8-F0D5493B53B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8E24DB3A-3F45-4F21-A278-F2D8F9B1C762}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
+		LICENSE.md = LICENSE.md
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +22,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D848FF44-BA0A-4964-A92A-FDBE9703E852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D848FF44-BA0A-4964-A92A-FDBE9703E852}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D848FF44-BA0A-4964-A92A-FDBE9703E852}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D848FF44-BA0A-4964-A92A-FDBE9703E852}.Release|Any CPU.Build.0 = Release|Any CPU
 		{48E477F9-49CC-42C7-882E-4F798E438669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{48E477F9-49CC-42C7-882E-4F798E438669}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48E477F9-49CC-42C7-882E-4F798E438669}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48E477F9-49CC-42C7-882E-4F798E438669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{131898AB-0DCE-45F3-89D8-F0D5493B53B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{131898AB-0DCE-45F3-89D8-F0D5493B53B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{131898AB-0DCE-45F3-89D8-F0D5493B53B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{131898AB-0DCE-45F3-89D8-F0D5493B53B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
