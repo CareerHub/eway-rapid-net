@@ -5,8 +5,12 @@
     <PackageId>eway-rapid-netstandard</PackageId>
     <Authors>Peter Riesz</Authors>
     <Company>Visual Eyes Creative</Company>
-    <Description>eWAY.Rapid Api for .Net Standard 1.4</Description>
+    <Description></Description>
     <Product>eWAY.Rapid .Net Standard 1.4</Product>
+    <PackageProjectUrl>https://github.com/visualeyes/eway-rapid-netstandard</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/visualeyes/eway-rapid-netstandard</RepositoryUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/visualeyes/eway-rapid-netstandard/blob/master/LICENSE.md</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
