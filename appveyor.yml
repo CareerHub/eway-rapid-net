@@ -21,7 +21,7 @@ build_script:
   - ps: dotnet pack "eWAY.Rapid" --configuration Release --output "bin" --version-suffix $env:APPVEYOR_BUILD_NUMBER
 
 artifacts:
-  - path: eWAY.Rapid\bin\eWAY.Rapid.*.nupkg
+  - path: eWAY.Rapid\bin\eway.rapid-netstandard.1.0.0-*.nupkg
 
 deploy:
   provider: NuGet
