@@ -118,693 +118,693 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="A2000" xml:space="preserve">
-    <value>"Transaction Approved"</value>
+    <value>Transaction Approved</value>
   </data>
   <data name="A2008" xml:space="preserve">
-    <value>"Honour With Identification"</value>
+    <value>Honour With Identification</value>
   </data>
   <data name="A2010" xml:space="preserve">
-    <value>"Approved For Partial Amount"</value>
+    <value>Approved For Partial Amount</value>
   </data>
   <data name="A2011" xml:space="preserve">
-    <value>"Approved, VIP"</value>
+    <value>Approved, VIP</value>
   </data>
   <data name="A2016" xml:space="preserve">
-    <value>"Approved, Update Track 3"</value>
+    <value>Approved, Update Track 3</value>
   </data>
   <data name="D4401" xml:space="preserve">
-    <value>"Refer to Issuer"</value>
+    <value>Refer to Issuer</value>
   </data>
   <data name="D4402" xml:space="preserve">
-    <value>"Refer to Issuer, special"</value>
+    <value>Refer to Issuer, special</value>
   </data>
   <data name="D4403" xml:space="preserve">
-    <value>"No Merchant"</value>
+    <value>No Merchant</value>
   </data>
   <data name="D4404" xml:space="preserve">
-    <value>"Pick Up Card"</value>
+    <value>Pick Up Card</value>
   </data>
   <data name="D4405" xml:space="preserve">
-    <value>"Do Not Honour"</value>
+    <value>Do Not Honour</value>
   </data>
   <data name="D4406" xml:space="preserve">
-    <value>"Error"</value>
+    <value>Error</value>
   </data>
   <data name="D4407" xml:space="preserve">
-    <value>"Pick Up Card, Special"</value>
+    <value>Pick Up Card, Special</value>
   </data>
   <data name="D4409" xml:space="preserve">
-    <value>"Request In Progress"</value>
+    <value>Request In Progress</value>
   </data>
   <data name="D4412" xml:space="preserve">
-    <value>"Invalid Transaction"</value>
+    <value>Invalid Transaction</value>
   </data>
   <data name="D4413" xml:space="preserve">
-    <value>"Invalid Amount"</value>
+    <value>Invalid Amount</value>
   </data>
   <data name="D4414" xml:space="preserve">
-    <value>"Invalid Card Number"</value>
+    <value>Invalid Card Number</value>
   </data>
   <data name="D4415" xml:space="preserve">
-    <value>"No Issuer"</value>
+    <value>No Issuer</value>
   </data>
   <data name="D4419" xml:space="preserve">
-    <value>"Re-enter Last Transaction"</value>
+    <value>Re-enter Last Transaction</value>
   </data>
   <data name="D4421" xml:space="preserve">
-    <value>"No Action Taken"</value>
+    <value>No Action Taken</value>
   </data>
   <data name="D4422" xml:space="preserve">
-    <value>"Suspected Malfunction"</value>
+    <value>Suspected Malfunction</value>
   </data>
   <data name="D4423" xml:space="preserve">
-    <value>"Unacceptable Transaction Fee"</value>
+    <value>Unacceptable Transaction Fee</value>
   </data>
   <data name="D4425" xml:space="preserve">
-    <value>"Unable to Locate Record On File"</value>
+    <value>Unable to Locate Record On File</value>
   </data>
   <data name="D4430" xml:space="preserve">
-    <value>"Format Error"</value>
+    <value>Format Error</value>
   </data>
   <data name="D4431" xml:space="preserve">
-    <value>"Bank Not Supported By Switch"</value>
+    <value>Bank Not Supported By Switch</value>
   </data>
   <data name="D4433" xml:space="preserve">
-    <value>"Expired Card, Capture"</value>
+    <value>Expired Card, Capture</value>
   </data>
   <data name="D4434" xml:space="preserve">
-    <value>"Suspected Fraud, Retain Card"</value>
+    <value>Suspected Fraud, Retain Card</value>
   </data>
   <data name="D4435" xml:space="preserve">
-    <value>"Card Acceptor, Contact Acquirer, Retain Card"</value>
+    <value>Card Acceptor, Contact Acquirer, Retain Card</value>
   </data>
   <data name="D4436" xml:space="preserve">
-    <value>"Restricted Card, Retain Card"</value>
+    <value>Restricted Card, Retain Card</value>
   </data>
   <data name="D4437" xml:space="preserve">
-    <value>"Contact Acquirer Security Department, Retain Card"</value>
+    <value>Contact Acquirer Security Department, Retain Card</value>
   </data>
   <data name="D4438" xml:space="preserve">
-    <value>"PIN Tries Exceeded, Capture"</value>
+    <value>PIN Tries Exceeded, Capture</value>
   </data>
   <data name="D4439" xml:space="preserve">
-    <value>"No Credit Account"</value>
+    <value>No Credit Account</value>
   </data>
   <data name="D4440" xml:space="preserve">
-    <value>"Function Not Supported"</value>
+    <value>Function Not Supported</value>
   </data>
   <data name="D4441" xml:space="preserve">
-    <value>"Lost Card"</value>
+    <value>Lost Card</value>
   </data>
   <data name="D4442" xml:space="preserve">
-    <value>"No Universal Account"</value>
+    <value>No Universal Account</value>
   </data>
   <data name="D4443" xml:space="preserve">
-    <value>"Stolen Card"</value>
+    <value>Stolen Card</value>
   </data>
   <data name="D4444" xml:space="preserve">
-    <value>"No Investment Account"</value>
+    <value>No Investment Account</value>
   </data>
   <data name="D4450" xml:space="preserve">
-    <value>"Visa Checkout Transaction Error"</value>
+    <value>Visa Checkout Transaction Error</value>
   </data>
   <data name="D4451" xml:space="preserve">
-    <value>"Insufficient Funds"</value>
+    <value>Insufficient Funds</value>
   </data>
   <data name="D4452" xml:space="preserve">
-    <value>"No Cheque Account"</value>
+    <value>No Cheque Account</value>
   </data>
   <data name="D4453" xml:space="preserve">
-    <value>"No Savings Account"</value>
+    <value>No Savings Account</value>
   </data>
   <data name="D4454" xml:space="preserve">
-    <value>"Expired Card"</value>
+    <value>Expired Card</value>
   </data>
   <data name="D4455" xml:space="preserve">
-    <value>"Incorrect PIN"</value>
+    <value>Incorrect PIN</value>
   </data>
   <data name="D4456" xml:space="preserve">
-    <value>"No Card Record"</value>
+    <value>No Card Record</value>
   </data>
   <data name="D4457" xml:space="preserve">
-    <value>"Function Not Permitted to Cardholder"</value>
+    <value>Function Not Permitted to Cardholder</value>
   </data>
   <data name="D4458" xml:space="preserve">
-    <value>"Function Not Permitted to Terminal"</value>
+    <value>Function Not Permitted to Terminal</value>
   </data>
   <data name="D4459" xml:space="preserve">
-    <value>"Suspected Fraud"</value>
+    <value>Suspected Fraud</value>
   </data>
   <data name="D4460" xml:space="preserve">
-    <value>"Acceptor Contact Acquirer"</value>
+    <value>Acceptor Contact Acquirer</value>
   </data>
   <data name="D4461" xml:space="preserve">
-    <value>"Exceeds Withdrawal Limit"</value>
+    <value>Exceeds Withdrawal Limit</value>
   </data>
   <data name="D4462" xml:space="preserve">
-    <value>"Restricted Card"</value>
+    <value>Restricted Card</value>
   </data>
   <data name="D4463" xml:space="preserve">
-    <value>"Security Violation"</value>
+    <value>Security Violation</value>
   </data>
   <data name="D4464" xml:space="preserve">
-    <value>"Original Amount Incorrect"</value>
+    <value>Original Amount Incorrect</value>
   </data>
   <data name="D4466" xml:space="preserve">
-    <value>"Acceptor Contact Acquirer, Security"</value>
+    <value>Acceptor Contact Acquirer, Security</value>
   </data>
   <data name="D4467" xml:space="preserve">
-    <value>"Capture Card"</value>
+    <value>Capture Card</value>
   </data>
   <data name="D4475" xml:space="preserve">
-    <value>"PIN Tries Exceeded"</value>
+    <value>PIN Tries Exceeded</value>
   </data>
   <data name="D4482" xml:space="preserve">
-    <value>"CVV Validation Error"</value>
+    <value>CVV Validation Error</value>
   </data>
   <data name="D4490" xml:space="preserve">
-    <value>"Cut off In Progress"</value>
+    <value>Cut off In Progress</value>
   </data>
   <data name="D4491" xml:space="preserve">
-    <value>"Card Issuer Unavailable"</value>
+    <value>Card Issuer Unavailable</value>
   </data>
   <data name="D4492" xml:space="preserve">
-    <value>"Unable To Route Transaction"</value>
+    <value>Unable To Route Transaction</value>
   </data>
   <data name="D4493" xml:space="preserve">
-    <value>"Cannot Complete, Violation Of The Law"</value>
+    <value>Cannot Complete, Violation Of The Law</value>
   </data>
   <data name="D4494" xml:space="preserve">
-    <value>"Duplicate Transaction"</value>
+    <value>Duplicate Transaction</value>
   </data>
   <data name="D4495" xml:space="preserve">
-    <value>"Amex Declined"</value>
+    <value>Amex Declined</value>
   </data>
   <data name="D4496" xml:space="preserve">
-    <value>"System Error"</value>
+    <value>System Error</value>
   </data>
   <data name="D4497" xml:space="preserve">
-    <value>"MasterPass Error"</value>
+    <value>MasterPass Error</value>
   </data>
   <data name="D4498" xml:space="preserve">
-    <value>"PayPal Create Transaction Error"</value>
+    <value>PayPal Create Transaction Error</value>
   </data>
   <data name="D4499" xml:space="preserve">
-    <value>"Invalid Transaction for Auth/Void"</value>
+    <value>Invalid Transaction for Auth/Void</value>
   </data>
   <data name="F7000" xml:space="preserve">
-    <value>"Undefined Fraud Error"</value>
+    <value>Undefined Fraud Error</value>
   </data>
   <data name="F7001" xml:space="preserve">
-    <value>"Challenged Fraud"</value>
+    <value>Challenged Fraud</value>
   </data>
   <data name="F7002" xml:space="preserve">
-    <value>"Country Match Fraud"</value>
+    <value>Country Match Fraud</value>
   </data>
   <data name="F7003" xml:space="preserve">
-    <value>"High Risk Country Fraud"</value>
+    <value>High Risk Country Fraud</value>
   </data>
   <data name="F7004" xml:space="preserve">
-    <value>"Anonymous Proxy Fraud"</value>
+    <value>Anonymous Proxy Fraud</value>
   </data>
   <data name="F7005" xml:space="preserve">
-    <value>"Transparent Proxy Fraud"</value>
+    <value>Transparent Proxy Fraud</value>
   </data>
   <data name="F7006" xml:space="preserve">
-    <value>"Free Email Fraud"</value>
+    <value>Free Email Fraud</value>
   </data>
   <data name="F7007" xml:space="preserve">
-    <value>"International Transaction Fraud"</value>
+    <value>International Transaction Fraud</value>
   </data>
   <data name="F7008" xml:space="preserve">
-    <value>"Risk Score Fraud"</value>
+    <value>Risk Score Fraud</value>
   </data>
   <data name="F7009" xml:space="preserve">
-    <value>"Denied Fraud"</value>
+    <value>Denied Fraud</value>
   </data>
   <data name="F7010" xml:space="preserve">
-    <value>"Denied by PayPal Fraud Rules"</value>
+    <value>Denied by PayPal Fraud Rules</value>
   </data>
   <data name="F9001" xml:space="preserve">
-    <value>"Custom Fraud Rule"</value>
+    <value>Custom Fraud Rule</value>
   </data>
   <data name="F9010" xml:space="preserve">
-    <value>"High Risk Billing Country"</value>
+    <value>High Risk Billing Country</value>
   </data>
   <data name="F9011" xml:space="preserve">
-    <value>"High Risk Credit Card Country"</value>
+    <value>High Risk Credit Card Country</value>
   </data>
   <data name="F9012" xml:space="preserve">
-    <value>"High Risk Customer IP Address"</value>
+    <value>High Risk Customer IP Address</value>
   </data>
   <data name="F9013" xml:space="preserve">
-    <value>"High Risk Email Address"</value>
+    <value>High Risk Email Address</value>
   </data>
   <data name="F9014" xml:space="preserve">
-    <value>"High Risk Shipping Country"</value>
+    <value>High Risk Shipping Country</value>
   </data>
   <data name="F9015" xml:space="preserve">
-    <value>"Multiple card numbers for single email address"</value>
+    <value>Multiple card numbers for single email address</value>
   </data>
   <data name="F9016" xml:space="preserve">
-    <value>"Multiple card numbers for single location"</value>
+    <value>Multiple card numbers for single location</value>
   </data>
   <data name="F9017" xml:space="preserve">
-    <value>"Multiple email addresses for single card number"</value>
+    <value>Multiple email addresses for single card number</value>
   </data>
   <data name="F9018" xml:space="preserve">
-    <value>"Multiple email addresses for single location"</value>
+    <value>Multiple email addresses for single location</value>
   </data>
   <data name="F9019" xml:space="preserve">
-    <value>"Multiple locations for single card number"</value>
+    <value>Multiple locations for single card number</value>
   </data>
   <data name="F9020" xml:space="preserve">
-    <value>"Multiple locations for single email address"</value>
+    <value>Multiple locations for single email address</value>
   </data>
   <data name="F9021" xml:space="preserve">
-    <value>"Suspicious Customer First Name"</value>
+    <value>Suspicious Customer First Name</value>
   </data>
   <data name="F9022" xml:space="preserve">
-    <value>"Suspicious Customer Last Name"</value>
+    <value>Suspicious Customer Last Name</value>
   </data>
   <data name="F9023" xml:space="preserve">
-    <value>"Transaction Declined"</value>
+    <value>Transaction Declined</value>
   </data>
   <data name="F9024" xml:space="preserve">
-    <value>"Multiple transactions for same address with known credit card"</value>
+    <value>Multiple transactions for same address with known credit card</value>
   </data>
   <data name="F9025" xml:space="preserve">
-    <value>"Multiple transactions for same address with new credit card"</value>
+    <value>Multiple transactions for same address with new credit card</value>
   </data>
   <data name="F9026" xml:space="preserve">
-    <value>"Multiple transactions for same email with new credit card"</value>
+    <value>Multiple transactions for same email with new credit card</value>
   </data>
   <data name="F9027" xml:space="preserve">
-    <value>"Multiple transactions for same email with known credit card"</value>
+    <value>Multiple transactions for same email with known credit card</value>
   </data>
   <data name="F9028" xml:space="preserve">
-    <value>"Multiple transactions for new credit card"</value>
+    <value>Multiple transactions for new credit card</value>
   </data>
   <data name="F9029" xml:space="preserve">
-    <value>"Multiple transactions for known credit card"</value>
+    <value>Multiple transactions for known credit card</value>
   </data>
   <data name="F9030" xml:space="preserve">
-    <value>"Multiple transactions for same email address"</value>
+    <value>Multiple transactions for same email address</value>
   </data>
   <data name="F9031" xml:space="preserve">
-    <value>"Multiple transactions for same credit card"</value>
+    <value>Multiple transactions for same credit card</value>
   </data>
   <data name="F9032" xml:space="preserve">
-    <value>"Invalid Customer Last Name"</value>
+    <value>Invalid Customer Last Name</value>
   </data>
   <data name="F9033" xml:space="preserve">
-    <value>"Invalid Billing Street"</value>
+    <value>Invalid Billing Street</value>
   </data>
   <data name="F9034" xml:space="preserve">
-    <value>"Invalid Shipping Street"</value>
+    <value>Invalid Shipping Street</value>
   </data>
   <data name="F9037" xml:space="preserve">
-    <value>"Suspicious Customer Email Address"</value>
+    <value>Suspicious Customer Email Address</value>
   </data>
   <data name="F9050" xml:space="preserve">
-    <value>"High Risk Email Address and amount"</value>
+    <value>High Risk Email Address and amount</value>
   </data>
   <data name="S5000" xml:space="preserve">
-    <value>"System Error"</value>
+    <value>System Error</value>
   </data>
   <data name="S5011" xml:space="preserve">
-    <value>"PayPal Connection Error"</value>
+    <value>PayPal Connection Error</value>
   </data>
   <data name="S5012" xml:space="preserve">
-    <value>"PayPal Settings Error"</value>
+    <value>PayPal Settings Error</value>
   </data>
   <data name="S5085" xml:space="preserve">
-    <value>"Started 3dSecure"</value>
+    <value>Started 3dSecure</value>
   </data>
   <data name="S5086" xml:space="preserve">
-    <value>"Routed 3dSecure"</value>
+    <value>Routed 3dSecure</value>
   </data>
   <data name="S5087" xml:space="preserve">
-    <value>"Completed 3dSecure"</value>
+    <value>Completed 3dSecure</value>
   </data>
   <data name="S5088" xml:space="preserve">
-    <value>"PayPal Transaction Created"</value>
+    <value>PayPal Transaction Created</value>
   </data>
   <data name="S5099" xml:space="preserve">
-    <value>"Incomplete (Access Code in progress/incomplete)"</value>
+    <value>Incomplete (Access Code in progress/incomplete)</value>
   </data>
   <data name="S5010" xml:space="preserve">
-    <value>"Unknown error returned by gateway"</value>
+    <value>Unknown error returned by gateway</value>
   </data>
   <data name="V6000" xml:space="preserve">
-    <value>"Validation error"</value>
+    <value>Validation error</value>
   </data>
   <data name="V6001" xml:space="preserve">
-    <value>"Invalid CustomerIP"</value>
+    <value>Invalid CustomerIP</value>
   </data>
   <data name="V6002" xml:space="preserve">
-    <value>"Invalid DeviceID"</value>
+    <value>Invalid DeviceID</value>
   </data>
   <data name="V6003" xml:space="preserve">
-    <value>"Invalid Request PartnerID"</value>
+    <value>Invalid Request PartnerID</value>
   </data>
   <data name="V6004" xml:space="preserve">
-    <value>"Invalid Request Method"</value>
+    <value>Invalid Request Method</value>
   </data>
   <data name="V6010" xml:space="preserve">
     <value>Invalid TransactionType, account not certified for eCome only MOTO or Recurring available</value>
   </data>
   <data name="V6011" xml:space="preserve">
-    <value>"Invalid Payment TotalAmount"</value>
+    <value>Invalid Payment TotalAmount</value>
   </data>
   <data name="V6012" xml:space="preserve">
-    <value>"Invalid Payment InvoiceDescription"</value>
+    <value>Invalid Payment InvoiceDescription</value>
   </data>
   <data name="V6013" xml:space="preserve">
-    <value>"Invalid Payment InvoiceNumber"</value>
+    <value>Invalid Payment InvoiceNumber</value>
   </data>
   <data name="V6014" xml:space="preserve">
-    <value>"Invalid Payment InvoiceReference"</value>
+    <value>Invalid Payment InvoiceReference</value>
   </data>
   <data name="V6015" xml:space="preserve">
-    <value>"Invalid Payment CurrencyCode"</value>
+    <value>Invalid Payment CurrencyCode</value>
   </data>
   <data name="V6016" xml:space="preserve">
-    <value>"Payment Required"</value>
+    <value>Payment Required</value>
   </data>
   <data name="V6017" xml:space="preserve">
-    <value>"Payment CurrencyCode Required"</value>
+    <value>Payment CurrencyCode Required</value>
   </data>
   <data name="V6018" xml:space="preserve">
-    <value>"Unknown Payment CurrencyCode"</value>
+    <value>Unknown Payment CurrencyCode</value>
   </data>
   <data name="V6021" xml:space="preserve">
-    <value>"EWAY_CARDHOLDERNAME Required"</value>
+    <value>EWAY_CARDHOLDERNAME Required</value>
   </data>
   <data name="V6022" xml:space="preserve">
-    <value>"EWAY_CARDNUMBER Required"</value>
+    <value>EWAY_CARDNUMBER Required</value>
   </data>
   <data name="V6023" xml:space="preserve">
-    <value>"EWAY_CARDCVN Required"</value>
+    <value>EWAY_CARDCVN Required</value>
   </data>
   <data name="V6033" xml:space="preserve">
-    <value>"Invalid Expiry Date"</value>
+    <value>Invalid Expiry Date</value>
   </data>
   <data name="V6034" xml:space="preserve">
-    <value>"Invalid Issue Number"</value>
+    <value>Invalid Issue Number</value>
   </data>
   <data name="V6035" xml:space="preserve">
-    <value>"Invalid Valid From Date"</value>
+    <value>Invalid Valid From Date</value>
   </data>
   <data name="V6040" xml:space="preserve">
-    <value>"Invalid TokenCustomerID"</value>
+    <value>Invalid TokenCustomerID</value>
   </data>
   <data name="V6041" xml:space="preserve">
-    <value>"Customer Required"</value>
+    <value>Customer Required</value>
   </data>
   <data name="V6042" xml:space="preserve">
-    <value>"Customer FirstName Required"</value>
+    <value>Customer FirstName Required</value>
   </data>
   <data name="V6043" xml:space="preserve">
-    <value>"Customer LastName Required"</value>
+    <value>Customer LastName Required</value>
   </data>
   <data name="V6044" xml:space="preserve">
-    <value>"Customer CountryCode Required"</value>
+    <value>Customer CountryCode Required</value>
   </data>
   <data name="V6045" xml:space="preserve">
-    <value>"Customer Title Required"</value>
+    <value>Customer Title Required</value>
   </data>
   <data name="V6046" xml:space="preserve">
-    <value>"TokenCustomerID Required"</value>
+    <value>TokenCustomerID Required</value>
   </data>
   <data name="V6047" xml:space="preserve">
-    <value>"RedirectURL Required"</value>
+    <value>RedirectURL Required</value>
   </data>
   <data name="V6048" xml:space="preserve">
-    <value>"CheckoutURL Required when CheckoutPayment specified"</value>
+    <value>CheckoutURL Required when CheckoutPayment specified</value>
   </data>
   <data name="​V6049" xml:space="preserve">
-    <value>"Invalid Checkout URL"</value>
+    <value>Invalid Checkout URL</value>
   </data>
   <data name="V6051" xml:space="preserve">
-    <value>"Invalid Customer FirstName"</value>
+    <value>Invalid Customer FirstName</value>
   </data>
   <data name="V6052" xml:space="preserve">
-    <value>"Invalid Customer LastName"</value>
+    <value>Invalid Customer LastName</value>
   </data>
   <data name="V6053" xml:space="preserve">
-    <value>"Invalid Customer CountryCode"</value>
+    <value>Invalid Customer CountryCode</value>
   </data>
   <data name="V6058" xml:space="preserve">
-    <value>"Invalid Customer Title"</value>
+    <value>Invalid Customer Title</value>
   </data>
   <data name="V6059" xml:space="preserve">
-    <value>"Invalid RedirectURL"</value>
+    <value>Invalid RedirectURL</value>
   </data>
   <data name="V6060" xml:space="preserve">
-    <value>"Invalid TokenCustomerID"</value>
+    <value>Invalid TokenCustomerID</value>
   </data>
   <data name="V6061" xml:space="preserve">
-    <value>"Invalid Customer Reference"</value>
+    <value>Invalid Customer Reference</value>
   </data>
   <data name="V6062" xml:space="preserve">
-    <value>"Invalid Customer CompanyName"</value>
+    <value>Invalid Customer CompanyName</value>
   </data>
   <data name="V6063" xml:space="preserve">
-    <value>"Invalid Customer JobDescription"</value>
+    <value>Invalid Customer JobDescription</value>
   </data>
   <data name="V6064" xml:space="preserve">
-    <value>"Invalid Customer Street1"</value>
+    <value>Invalid Customer Street1</value>
   </data>
   <data name="V6065" xml:space="preserve">
-    <value>"Invalid Customer Street2"</value>
+    <value>Invalid Customer Street2</value>
   </data>
   <data name="V6066" xml:space="preserve">
-    <value>"Invalid Customer City"</value>
+    <value>Invalid Customer City</value>
   </data>
   <data name="V6067" xml:space="preserve">
-    <value>"Invalid Customer State"</value>
+    <value>Invalid Customer State</value>
   </data>
   <data name="V6068" xml:space="preserve">
-    <value>"Invalid Customer PostalCode"</value>
+    <value>Invalid Customer PostalCode</value>
   </data>
   <data name="V6069" xml:space="preserve">
-    <value>"Invalid Customer Email"</value>
+    <value>Invalid Customer Email</value>
   </data>
   <data name="V6070" xml:space="preserve">
-    <value>"Invalid Customer Phone"</value>
+    <value>Invalid Customer Phone</value>
   </data>
   <data name="V6071" xml:space="preserve">
-    <value>"Invalid Customer Mobile"</value>
+    <value>Invalid Customer Mobile</value>
   </data>
   <data name="V6072" xml:space="preserve">
-    <value>"Invalid Customer Comments"</value>
+    <value>Invalid Customer Comments</value>
   </data>
   <data name="V6073" xml:space="preserve">
-    <value>"Invalid Customer Fax"</value>
+    <value>Invalid Customer Fax</value>
   </data>
   <data name="V6074" xml:space="preserve">
-    <value>"Invalid Customer URL"</value>
+    <value>Invalid Customer URL</value>
   </data>
   <data name="V6075" xml:space="preserve">
-    <value>"Invalid ShippingAddress FirstName"</value>
+    <value>Invalid ShippingAddress FirstName</value>
   </data>
   <data name="V6076" xml:space="preserve">
-    <value>"Invalid ShippingAddress LastName"</value>
+    <value>Invalid ShippingAddress LastName</value>
   </data>
   <data name="V6077" xml:space="preserve">
-    <value>"Invalid ShippingAddress Street1"</value>
+    <value>Invalid ShippingAddress Street1</value>
   </data>
   <data name="V6078" xml:space="preserve">
-    <value>"Invalid ShippingAddress Street2"</value>
+    <value>Invalid ShippingAddress Street2</value>
   </data>
   <data name="V6079" xml:space="preserve">
-    <value>"Invalid ShippingAddress City"</value>
+    <value>Invalid ShippingAddress City</value>
   </data>
   <data name="V6080" xml:space="preserve">
-    <value>"Invalid ShippingAddress State"</value>
+    <value>Invalid ShippingAddress State</value>
   </data>
   <data name="V6081" xml:space="preserve">
-    <value>"Invalid ShippingAddress PostalCode"</value>
+    <value>Invalid ShippingAddress PostalCode</value>
   </data>
   <data name="V6082" xml:space="preserve">
-    <value>"Invalid ShippingAddress Email"</value>
+    <value>Invalid ShippingAddress Email</value>
   </data>
   <data name="V6083" xml:space="preserve">
-    <value>"Invalid ShippingAddress Phone"</value>
+    <value>Invalid ShippingAddress Phone</value>
   </data>
   <data name="V6084" xml:space="preserve">
-    <value>"Invalid ShippingAddress Country"</value>
+    <value>Invalid ShippingAddress Country</value>
   </data>
   <data name="V6085" xml:space="preserve">
-    <value>"Invalid ShippingAddress ShippingMethod"</value>
+    <value>Invalid ShippingAddress ShippingMethod</value>
   </data>
   <data name="V6086" xml:space="preserve">
-    <value>"Invalid ShippingAddress Fax"</value>
+    <value>Invalid ShippingAddress Fax</value>
   </data>
   <data name="V6091" xml:space="preserve">
-    <value>"Unknown Customer CountryCode"</value>
+    <value>Unknown Customer CountryCode</value>
   </data>
   <data name="V6092" xml:space="preserve">
-    <value>"Unknown ShippingAddress CountryCode"</value>
+    <value>Unknown ShippingAddress CountryCode</value>
   </data>
   <data name="V6100" xml:space="preserve">
-    <value>"Invalid EWAY_CARDNAME"</value>
+    <value>Invalid EWAY_CARDNAME</value>
   </data>
   <data name="V6101" xml:space="preserve">
-    <value>"Invalid EWAY_CARDEXPIRYMONTH"</value>
+    <value>Invalid EWAY_CARDEXPIRYMONTH</value>
   </data>
   <data name="V6102" xml:space="preserve">
-    <value>"Invalid EWAY_CARDEXPIRYYEAR"</value>
+    <value>Invalid EWAY_CARDEXPIRYYEAR</value>
   </data>
   <data name="V6103" xml:space="preserve">
-    <value>"Invalid EWAY_CARDSTARTMONTH"</value>
+    <value>Invalid EWAY_CARDSTARTMONTH</value>
   </data>
   <data name="V6104" xml:space="preserve">
-    <value>"Invalid EWAY_CARDSTARTYEAR"</value>
+    <value>Invalid EWAY_CARDSTARTYEAR</value>
   </data>
   <data name="V6105" xml:space="preserve">
-    <value>"Invalid EWAY_CARDISSUENUMBER"</value>
+    <value>Invalid EWAY_CARDISSUENUMBER</value>
   </data>
   <data name="V6106" xml:space="preserve">
-    <value>"Invalid EWAY_CARDCVN"</value>
+    <value>Invalid EWAY_CARDCVN</value>
   </data>
   <data name="V6107" xml:space="preserve">
-    <value>"Invalid EWAY_ACCESSCODE"</value>
+    <value>Invalid EWAY_ACCESSCODE</value>
   </data>
   <data name="V6108" xml:space="preserve">
-    <value>"Invalid CustomerHostAddress"</value>
+    <value>Invalid CustomerHostAddress</value>
   </data>
   <data name="V6109" xml:space="preserve">
-    <value>"Invalid UserAgent"</value>
+    <value>Invalid UserAgent</value>
   </data>
   <data name="V6110" xml:space="preserve">
-    <value>"Invalid EWAY_CARDNUMBER"</value>
+    <value>Invalid EWAY_CARDNUMBER</value>
   </data>
   <data name="V6111" xml:space="preserve">
-    <value>"Unauthorised API Access, Account Not PCI Certified"</value>
+    <value>Unauthorised API Access, Account Not PCI Certified</value>
   </data>
   <data name="V6112" xml:space="preserve">
-    <value>"Redundant card details other than expiry year and month"</value>
+    <value>Redundant card details other than expiry year and month</value>
   </data>
   <data name="V6113" xml:space="preserve">
-    <value>"Invalid transaction for refund"</value>
+    <value>Invalid transaction for refund</value>
   </data>
   <data name="V6114" xml:space="preserve">
-    <value>"Gateway validation error"</value>
+    <value>Gateway validation error</value>
   </data>
   <data name="V6115" xml:space="preserve">
-    <value>"Invalid DirectRefundRequest, Transaction ID"</value>
+    <value>Invalid DirectRefundRequest, Transaction ID</value>
   </data>
   <data name="V6116" xml:space="preserve">
-    <value>"Invalid card data on original TransactionID"</value>
+    <value>Invalid card data on original TransactionID</value>
   </data>
   <data name="V6117" xml:space="preserve">
-    <value>"Invalid CreateAccessCodeSharedRequest, FooterText"</value>
+    <value>Invalid CreateAccessCodeSharedRequest, FooterText</value>
   </data>
   <data name="V6118" xml:space="preserve">
-    <value>"Invalid CreateAccessCodeSharedRequest, HeaderText"</value>
+    <value>Invalid CreateAccessCodeSharedRequest, HeaderText</value>
   </data>
   <data name="V6119" xml:space="preserve">
-    <value>"Invalid CreateAccessCodeSharedRequest, Language"</value>
+    <value>Invalid CreateAccessCodeSharedRequest, Language</value>
   </data>
   <data name="V6120" xml:space="preserve">
-    <value>"Invalid CreateAccessCodeSharedRequest, LogoUrl"</value>
+    <value>Invalid CreateAccessCodeSharedRequest, LogoUrl</value>
   </data>
   <data name="V6121" xml:space="preserve">
-    <value>"Invalid TransactionSearch, Filter Match Type"</value>
+    <value>Invalid TransactionSearch, Filter Match Type</value>
   </data>
   <data name="V6122" xml:space="preserve">
-    <value>"Invalid TransactionSearch, Non numeric Transaction ID"</value>
+    <value>Invalid TransactionSearch, Non numeric Transaction ID</value>
   </data>
   <data name="V6123" xml:space="preserve">
-    <value>"Invalid TransactionSearch,no TransactionID or AccessCode specified"</value>
+    <value>Invalid TransactionSearch,no TransactionID or AccessCode specified</value>
   </data>
   <data name="V6124" xml:space="preserve">
-    <value>"Invalid Line Items. The line items have been provided however the totals do not match the TotalAmount field"</value>
+    <value>Invalid Line Items. The line items have been provided however the totals do not match the TotalAmount field</value>
   </data>
   <data name="V6125" xml:space="preserve">
-    <value>"Selected Payment Type not enabled"</value>
+    <value>Selected Payment Type not enabled</value>
   </data>
   <data name="V6126" xml:space="preserve">
-    <value>"Invalid encrypted card number, decryption failed"</value>
+    <value>Invalid encrypted card number, decryption failed</value>
   </data>
   <data name="V6127" xml:space="preserve">
-    <value>"Invalid encrypted cvn, decryption failed"</value>
+    <value>Invalid encrypted cvn, decryption failed</value>
   </data>
   <data name="V6128" xml:space="preserve">
-    <value>"Invalid Method for Payment Type"</value>
+    <value>Invalid Method for Payment Type</value>
   </data>
   <data name="V6129" xml:space="preserve">
-    <value>"Transaction has not been authorised for Capture/Cancellation"</value>
+    <value>Transaction has not been authorised for Capture/Cancellation</value>
   </data>
   <data name="V6130" xml:space="preserve">
-    <value>"Generic customer information error"</value>
+    <value>Generic customer information error</value>
   </data>
   <data name="V6131" xml:space="preserve">
-    <value>"Generic shipping information error"</value>
+    <value>Generic shipping information error</value>
   </data>
   <data name="V6132" xml:space="preserve">
-    <value>"Transaction has already been completed or voided, operation not permitted"</value>
+    <value>Transaction has already been completed or voided, operation not permitted</value>
   </data>
   <data name="V6133" xml:space="preserve">
-    <value>"Checkout not available for Payment Type"</value>
+    <value>Checkout not available for Payment Type</value>
   </data>
   <data name="V6134" xml:space="preserve">
-    <value>"Invalid Auth Transaction ID for Capture/Void"</value>
+    <value>Invalid Auth Transaction ID for Capture/Void</value>
   </data>
   <data name="V6135" xml:space="preserve">
-    <value>"PayPal Error Processing Refund"</value>
+    <value>PayPal Error Processing Refund</value>
   </data>
   <data name="V6140" xml:space="preserve">
-    <value>"Merchant account is suspended"</value>
+    <value>Merchant account is suspended</value>
   </data>
   <data name="V6141" xml:space="preserve">
-    <value>"Invalid PayPal account details or API signature"</value>
+    <value>Invalid PayPal account details or API signature</value>
   </data>
   <data name="V6142" xml:space="preserve">
-    <value>"Authorise not available for Bank/Branch"</value>
+    <value>Authorise not available for Bank/Branch</value>
   </data>
   <data name="V6150" xml:space="preserve">
-    <value>"Invalid Refund Amount"</value>
+    <value>Invalid Refund Amount</value>
   </data>
   <data name="V6151" xml:space="preserve">
-    <value>"Refund amount greater than original transaction"</value>
+    <value>Refund amount greater than original transaction</value>
   </data>
   <data name="V6152" xml:space="preserve">
-    <value>"Original transaction already refunded for total amount"</value>
+    <value>Original transaction already refunded for total amount</value>
   </data>
   <data name="V6153" xml:space="preserve">
-    <value>"Card type not support by merchant"</value>
+    <value>Card type not support by merchant</value>
   </data>
   <data name="V6160" xml:space="preserve">
-    <value>"Encryption Method Not Supported"</value>
+    <value>Encryption Method Not Supported</value>
   </data>
   <data name="V6165" xml:space="preserve">
-    <value>"Invalid Visa Checkout data or decryption failed"</value>
+    <value>Invalid Visa Checkout data or decryption failed</value>
   </data>
   <data name="V6170" xml:space="preserve">
-    <value>"Invalid TransactionSearch, Invoice Number is not unique"</value>
+    <value>Invalid TransactionSearch, Invoice Number is not unique</value>
   </data>
   <data name="V6171" xml:space="preserve">
-    <value>"Invalid TransactionSearch, Invoice Number not found"</value>
+    <value>Invalid TransactionSearch, Invoice Number not found</value>
   </data>
   <data name="S9990" xml:space="preserve">
-    <value>"An invalid endpoint has been set in the eWAY SDK"</value>
+    <value>An invalid endpoint has been set in the eWAY SDK</value>
   </data>
   <data name="S9991" xml:space="preserve">
-    <value>"Invalid credentials have been set in the eWAY SDK"</value>
+    <value>Invalid credentials have been set in the eWAY SDK</value>
   </data>
   <data name="S9992" xml:space="preserve">
-    <value>"An error occurred connecting to eWAY"</value>
+    <value>An error occurred connecting to eWAY</value>
   </data>
   <data name="S9993" xml:space="preserve">
-    <value>"Incorrect eWAY API Key or Password"</value>
+    <value>Incorrect eWAY API Key or Password</value>
   </data>
   <data name="S9995" xml:space="preserve">
-    <value>"Invalid TransactionFilter"</value>
+    <value>Invalid TransactionFilter</value>
   </data>
   <data name="HTTP404" xml:space="preserve">
-    <value>"Invalid endpoint"</value>
+    <value>Invalid endpoint</value>
   </data>
 </root>

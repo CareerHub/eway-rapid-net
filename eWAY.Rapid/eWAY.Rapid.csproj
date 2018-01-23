@@ -17,6 +17,7 @@
     <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="1.1.2" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <EmbeddedResource Update="ErrorMessages.en.resx" />
   </ItemGroup>
 
 </Project>
