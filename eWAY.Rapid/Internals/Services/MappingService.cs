@@ -7,6 +7,7 @@ namespace eWAY.Rapid.Internals.Services {
 
         static MappingService() {
             config = new MapperConfiguration(c => {
+                c.CreateMap<Rapid.Models.BaseResponse, Response.BaseResponse>();
                 c.AddProfile<CustomMapProfile>();
                 c.AddProfile<EntitiesMapProfile>();
                 c.AddProfile<RequestMapProfile>();

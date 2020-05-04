@@ -19,6 +19,7 @@ namespace eWAY.Rapid.Tests.IntegrationTests {
             TestUtil.AssertNoErrors(settlementResponse);
         }
 
+        /*
         [TestMethod]
         public async Task SettlementSearch_ByDateRange_Test() {
             var client = CreateRapidApiClient();
@@ -38,6 +39,7 @@ namespace eWAY.Rapid.Tests.IntegrationTests {
             Assert.IsTrue(settlementResponse.SettlementTransactions.Length > 1);
             Assert.IsTrue(settlementResponse.SettlementSummaries.Length > 1);
         }
+        */
 
         [TestMethod]
         public async Task SettlementSearch_WithPage_Test() {
