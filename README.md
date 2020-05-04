@@ -1,10 +1,10 @@
-eWAY Rapid .NET Standard 1.4 Library
+eWAY Rapid .NET Standard 2.0 Library
 ========
 ![Build Status](https://ci.appveyor.com/api/projects/status/github/visualeyes/eway-rapid-netstandard?branch=master&svg=true) 
 [![Nuget Version](https://img.shields.io/nuget/v/eway-rapid-netstandard.svg)](https://www.nuget.org/packages/eway-rapid-netstandard/) 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-A .NET Standard 1.4 library to integrate with eWAY's Rapid Payment API.
+A .NET Standard 2.0 library to integrate with eWAY's Rapid Payment API.
 
 Sign up with eWAY at:
  - Australia:    https://www.eway.com.au/
