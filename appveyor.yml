@@ -21,7 +21,7 @@ build_script:
   - ps: dotnet pack "eWAY.Rapid" --configuration Release --output "bin" /p:PackageVersion=$($env:APPVEYOR_REPO_TAG_NAME.TrimStart("v"))
 
 artifacts:
-  - path: eWAY.Rapid\bin\*.nupkg
+  - path: bin\*.nupkg
 
 deploy:
   provider: NuGet
