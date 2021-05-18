@@ -40,7 +40,7 @@ Transaction transaction = new Transaction(){
             Number = "4444333322221111",
             ExpiryMonth = "11",
             ExpiryYear = "22",
-            CVN = "123"
+            CVN = "123" 
         } 
     },
     PaymentDetails = new PaymentDetails()
