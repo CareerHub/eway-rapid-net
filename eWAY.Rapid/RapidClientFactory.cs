@@ -33,20 +33,18 @@ namespace eWAY.Rapid {
         public static string UserDisplayMessage(string errorCode, string language = SystemConstants.DEFAULT_LANGUAGE_CODE) {
             ResourceManager rm = new ResourceManager("eWAY.Rapid.Resources.ErrorMessages", typeof(RapidClientFactory).GetTypeInfo().Assembly);
 
-            string result = null;
-
             try {
                 var cultureInfo = new CultureInfo(language);
-                return result = rm.GetString(errorCode, cultureInfo);
+                return rm.GetString(errorCode, cultureInfo);
 
             } catch(CultureNotFoundException) {
                 var cultureInfo = new CultureInfo(SystemConstants.DEFAULT_LANGUAGE_CODE);
-                return result = rm.GetString(errorCode, cultureInfo);
+                return rm.GetString(errorCode, cultureInfo);
 
             } catch(MissingManifestResourceException) {
                 var cultureInfo = new CultureInfo(SystemConstants.DEFAULT_LANGUAGE_CODE);
                 try {
-                    return result = rm.GetString(errorCode, cultureInfo);
+                    return rm.GetString(errorCode, cultureInfo);
                 } catch(MissingManifestResourceException) {
                     return SystemConstants.INVALID_ERROR_CODE_MESSAGE;
                 }

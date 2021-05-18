@@ -1,25 +1,24 @@
-﻿using System;
+﻿using eWAY.Rapid.Internals.Enums;
+using eWAY.Rapid.Internals.Request;
+using eWAY.Rapid.Internals.Response;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Reflection;
 using System.Security.Authentication;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using eWAY.Rapid.Internals.Enums;
-using eWAY.Rapid.Internals.Request;
-using eWAY.Rapid.Internals.Response;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace eWAY.Rapid.Internals.Services {
     /// <summary>
     /// Internal Client class that does the invocation of Rapid native API call
     /// </summary>
     internal class RapidService : IRapidService {
-        private Uri _rapidEndpoint;
-        private string _apiKey;
-        private string _password;
+        private readonly Uri _rapidEndpoint;
+        private readonly string _apiKey;
+        private readonly string _password;
 
         private const string ACCESS_CODES = "AccessCodes";
         private const string ACCESS_CODE_RESULT = "AccessCode/{0}";
@@ -136,11 +135,11 @@ namespace eWAY.Rapid.Internals.Services {
         public async Task<TResponse> JsonPostAsync<TRequest, TResponse>(TRequest request, string method)
             where TRequest : class
             where TResponse : BaseResponse, new() {
-            var jsonString = JsonConvert.SerializeObject(request,
-                   new JsonSerializerSettings() {
-                       NullValueHandling = NullValueHandling.Ignore,
-                       Converters = new JsonConverter[] { new StringEnumConverter() }
-                   });
+
+            var jsonString = JsonSerializer.Serialize(request, new JsonSerializerOptions {
+                IgnoreNullValues = true,
+                Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, false) }
+            });
 
             var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
@@ -176,19 +175,19 @@ namespace eWAY.Rapid.Internals.Services {
                 if(String.IsNullOrEmpty(content)) {
                     return new TResponse() { Errors = RapidSystemErrorCode.COMMUNICATION_ERROR };
                 } else {
-                    return JsonConvert.DeserializeObject<TResponse>(content);
+                    return JsonSerializer.Deserialize<TResponse>(content);
                 }
             }
         }
 
         private HttpClient GetClient() {
-            var handler = new HttpClientHandler();
+            var handler = new HttpClientHandler {
+                SslProtocols = SslProtocols.Tls12
+            };
 
-            handler.SslProtocols = SslProtocols.Tls12;
-
-            var client = new HttpClient(handler);
-
-            client.BaseAddress = _rapidEndpoint;
+            var client = new HttpClient(handler) {
+                BaseAddress = _rapidEndpoint
+            };
 
             var headers = client.DefaultRequestHeaders;
 
